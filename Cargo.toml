@@ -1,0 +1,10 @@
+[package]
+name = "fehui"
+version = "0.1.0"
+authors = ["msiglreith <m.siglreith@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+fehui-derive = { path = "derive" }
+derivative = "1"
+indextree = "3"
