@@ -77,14 +77,14 @@ pub fn widget(input: TokenStream) -> TokenStream {
                     let state_ref = ctxt.create_state(|| Self::#state_fn(self));
                     let state_borrow = state_ref.borrow();
                     let state_inner = state_borrow.downcast_ref().unwrap();
-                    let repr = #ident::#build_fn(self, state_inner, &mut ctxt);
+                    let repr = Self::#build_fn(self, state_inner, &mut ctxt);
                     unsafe { ctxt.add(repr, None); }
                 }
             })
         }
         None => quote!(impl Widget for #ident {
             fn build(&self, mut ctxt: Build) {
-                let repr = Self:#build_fn(self, &mut ctxt);
+                let repr = Self::#build_fn(self, &mut ctxt);
                 unsafe { ctxt.add(repr, None); }
             }
         }),

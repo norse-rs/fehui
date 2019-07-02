@@ -8,3 +8,11 @@ edition = "2018"
 fehui-derive = { path = "derive" }
 derivative = "1"
 indextree = "3"
+
+[dev-dependencies]
+fehui-hotload = { path = "hotload" }
+
+[[example]]
+name = "hotload-app"
+path = "examples/hotload-app.rs"
+crate-type = ["dylib"]

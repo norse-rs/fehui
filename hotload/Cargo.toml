@@ -1,0 +1,11 @@
+[package]
+name = "fehui-hotload"
+version = "0.1.0"
+authors = ["msiglreith <m.siglreith@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+libloading = "0.5"
+notify = "4"
+tempfile = "3"
+fehui = { path = ".." }
