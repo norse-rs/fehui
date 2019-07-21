@@ -80,12 +80,18 @@ pub fn widget(input: TokenStream) -> TokenStream {
                     let repr = Self::#build_fn(self, state_inner, &mut ctxt);
                     unsafe { ctxt.add(repr, None); }
                 }
+                fn layout(&self, _: Layouter) -> Layout {
+                    Layout::Pass
+                }
             })
         }
         None => quote!(impl Widget for #ident {
             fn build(&self, mut ctxt: Build) {
                 let repr = Self::#build_fn(self, &mut ctxt);
                 unsafe { ctxt.add(repr, None); }
+            }
+            fn layout(&self, _: Layouter) -> Layout {
+                Layout::Pass
             }
         }),
     })

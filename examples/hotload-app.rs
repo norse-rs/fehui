@@ -1,9 +1,9 @@
-use fehui::{Widget, Build};
-use fehui_derive::Widget;
+use fehui;
 use fehui::views;
 use fehui::widgets::Row;
+use fehui::{Build, Widget};
+use fehui_derive::Widget;
 use fehui_hotload::fehui_hook;
-use fehui;
 
 #[derive(Debug, Widget)]
 #[widget(build)]
@@ -16,14 +16,13 @@ impl App {
         println!("build app");
 
         Row {
-            children: views![
-                Row { children: views![] },
-                Row { children: views![] },
-            ],
+            children: views![Row { children: views![] }, Row { children: views![] },],
         }
     }
 }
 
 fehui_hook!(|ui: &mut fehui::FehUI| {
-    ui.build(App { main_color: [0.0, 0.1, 1.0, 0.0] });
+    ui.build(App {
+        main_color: [0.0, 0.1, 1.0, 0.0],
+    });
 });

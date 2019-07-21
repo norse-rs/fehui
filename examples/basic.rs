@@ -1,8 +1,8 @@
 use fehui;
-use fehui::{Widget, Build};
-use fehui_derive::Widget;
 use fehui::views;
 use fehui::widgets::Row;
+use fehui::{Build, Layout, Layouter, Widget};
+use fehui_derive::Widget;
 
 /// Persistent state information for `App`
 struct AppState {
@@ -21,10 +21,7 @@ impl App {
     /// `state` is optional and may be removed if not needed (remove `state` attribute).
     fn build(&self, state: &AppState, build: &mut Build) -> Row {
         Row {
-            children: views![
-                Row { children: views![] },
-                Row { children: views![] },
-            ],
+            children: views![Row { children: views![] }, Row { children: views![] },],
         }
     }
 
@@ -32,17 +29,20 @@ impl App {
     ///
     /// Do not call this from user code. The UI will internally execute this if needed.
     fn state(&self) -> AppState {
-        AppState { color: self.main_color }
+        AppState {
+            color: self.main_color,
+        }
     }
 }
 
 fn main() {
     let mut ui = fehui::FehUI::new();
 
-    loop {
+    {
         /// Rebuild the UI with `App` as root widget.
         ui.build(App {
             main_color: [0.2, 0.0, 0.1, 1.0],
         });
+        ui.layout(100.0, 50.0);
     }
 }

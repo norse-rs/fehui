@@ -6,11 +6,19 @@ edition = "2018"
 
 [dependencies]
 fehui-derive = { path = "derive" }
+fehui-d2d = { path = "../fehui-d2d" }
 derivative = "1"
 indextree = "3"
+stretch = "0.3"
+
+[patch.crates-io]
+kurbo = { git = "https://github.com/msiglreith/kurbo.git", branch = "rounded_rect" }
 
 [dev-dependencies]
 fehui-hotload = { path = "hotload" }
+random_color = "0.4"
+winit = "0.18"
+piet = "0.0.4"
 
 [[example]]
 name = "hotload-app"
